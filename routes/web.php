@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PlaceToPayController@welcome')->name('welcome');
+Route::get('/listar', 'PlaceToPayController@listar')->name('listar');
+Route::get('/return', 'PlaceToPayController@redirect')->name('redirect');
+Route::post('/store', 'PlaceToPayController@store')->name('store');
+

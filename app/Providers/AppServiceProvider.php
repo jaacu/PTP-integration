@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\SoapPTP;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /**
+         * Register the Soap Helper class
+         */
+        $this->app->singleton('soap' , function(){
+            return new SoapPTP();
+        });
     }
 }
