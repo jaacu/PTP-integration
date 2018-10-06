@@ -87,6 +87,9 @@ class PlaceToPayController extends Controller
         return redirect(route('welcome'))->withErrors('Algo salio mal, intentalo de nuevo!'); 
     }
     $transaction = Transaction::where('token' , $token)->first();
+    if (is_null($transaction)){
+        return redirect(route('welcome'))->withErrors('Algo salio mal, intentalo de nuevo!'); 
+    }
     $soap = resolve('soap');
     $response = $soap->getTransactionInformation($transaction->transaction_id);
     return view('welcomeBack', compact('transaction' , 'response'));

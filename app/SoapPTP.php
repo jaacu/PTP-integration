@@ -156,4 +156,12 @@ class SoapPTP
         ])->getTransactionInformationResult;
         return $response;
     }
+
+    /**
+     * Get the SoapClient Instance
+     * @return SoapClient 
+     */
+    public function getSoap(){
+        return $this->soap;
+    }
 }
